@@ -1,0 +1,5 @@
+version: '3'
+services:
+  cs16:
+    build: .
+    image: mattiashem/cs16

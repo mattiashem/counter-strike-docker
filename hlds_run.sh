@@ -37,9 +37,10 @@ if [ -n "${RCON_PASSWORD}" ]; then
     OPTIONS+=("+rcon_password" "${RCON_PASSWORD}")
 fi
 
-if [ -n "${ADMIN_STEAM}" ]; then
-    echo "\"STEAM_${ADMIN_STEAM}\" \"\"  \"abcdefghijklmnopqrstu\" \"ce\"" >> "/opt/hlds/cstrike/addons/amxmodx/configs/users.ini"
-fi
+# Disable we add admin in k8s
+#if [ -n "${ADMIN_STEAM}" ]; then
+#    echo "\"STEAM_${ADMIN_STEAM}\" \"\"  \"abcdefghijklmnopqrstu\" \"ce\"" >> "/opt/hlds/cstrike/addons/amxmodx/configs/users.ini"
+#fi
 
 set > "${CONFIG_FILE}"
 

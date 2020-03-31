@@ -14,7 +14,7 @@ RUN mkdir -p /opt/steam && cd /opt/steam && \
 # Install HLDS
 RUN mkdir -p /opt/hlds
 # Workaround for "app_update 90" bug, see https://forums.alliedmods.net/showthread.php?p=2518786
-RUN /opt/steam/steamcmd.sh +login $steam_user $steam_password +force_install_dir /opt/hlds +app_update 90 validate +quit
+RUN /opt/steam/steamcmd.sh +login $steam_user $steam_password +force_install_dir /opt/hlds +app_update 90 validate +quit || :
 RUN /opt/steam/steamcmd.sh +login $steam_user $steam_password +force_install_dir /opt/hlds +app_update 70 validate +quit || :
 RUN /opt/steam/steamcmd.sh +login $steam_user $steam_password +force_install_dir /opt/hlds +app_update 10 validate +quit || :
 RUN /opt/steam/steamcmd.sh +login $steam_user $steam_password +force_install_dir /opt/hlds +app_update 90 validate +quit
@@ -52,5 +52,4 @@ ADD files/maps.ini /opt/hlds/cstrike/addons/amxmodx/configs/maps.ini
 RUN apt remove -y curl
 
 WORKDIR /opt/hlds
-
 ENTRYPOINT ["/bin/hlds_run.sh"]
